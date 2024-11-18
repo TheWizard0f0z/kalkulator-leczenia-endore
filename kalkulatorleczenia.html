@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator leczenia Endore Middle-Earth</title>
+  <style>
+    body {
+      font-family: 'Cinzel', serif;
+      background: url('https://endoreshard.wordpress.com/wp-content/uploads/2021/04/header1.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #f4e9c5;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 3rem;
+      color: #e0d69b;
+      text-shadow: 0 0 10px #000, 0 0 20px #6b4226;
+    }
+    #calculator {
+      background: rgba(0, 0, 0, 0.8);
+      border: 5px solid #c69c6d;
+      border-radius: 15px;
+      padding: 20px;
+      max-width: 400px;
+      margin: 20px auto;
+      box-shadow: 0 0 15px #000, 0 0 25px #6b4226;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-size: 1.2rem;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 2px solid #c69c6d;
+      border-radius: 5px;
+      background-color: #f4e9c5;
+      color: #3e2723;
+      box-shadow: inset 0 0 5px #000;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      color: #f4e9c5;
+      background-color: #6b4226;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #000, 0 0 15px #6b4226;
+    }
+    button:hover {
+      background-color: #8b5e3c;
+      box-shadow: 0 0 20px #000, 0 0 25px #8b5e3c;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      color: #e0d69b;
+      text-shadow: 0 0 10px #000;
+    }
+    footer {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #e0d69b;
+    }
+    footer a {
+      color: #c69c6d;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Kalkulator leczenia Endore Middle-Earth</h1>
+  <div id="calculator">
+    <label for="anatomy">Anatomia:</label>
+    <input type="number" id="anatomy" placeholder="Wpisz wartość anatomii" step="any">
+
+    <label for="healing">Uzdrawianie:</label>
+    <input type="number" id="healing" placeholder="Wpisz wartość uzdrawiania" step="any">
+
+    <button onclick="calculate()">Calculate</button>
+
+    <div id="result"></div>
+  </div>
+  <footer>
+    Stworzone dla najodważniejszych poszukiwaczy przygód. 
+    <br> Inspiracja <a href="https://wiki.endore.pl" target="_blank">Endore Middle-Earth</a>.
+  </footer>
+  <script>
+    function calculate() {
+      // Pobierz wartości od użytkownika
+      const anatomy = parseFloat(document.getElementById('anatomy').value) || 0;
+      const healing = parseFloat(document.getElementById('healing').value) || 0;
+
+      // Obliczenia
+      const startingTicks = 5 + Math.floor(healing / 20);
+      const healAmountRaw = anatomy * 0.05 + healing * 0.1;
+      const healAmount = 2 + Math.floor(healAmountRaw);
+
+      // Wyświetlenie wyników
+      document.getElementById('result').innerHTML = `
+        <p>Tiki: <strong>${startingTicks}</strong></p>
+        <p>HP na tik: <strong>${healAmount}</strong></p>
+      `;
+    }
+  </script>
+</body>
+</html>
